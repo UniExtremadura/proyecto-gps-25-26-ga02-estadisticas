@@ -359,7 +359,19 @@ def artists_ratings(request):
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def artists_stats(request):
-    return artists_ratings(request)
+    # Avoid calling the DRF-wrapped view directly to prevent Request/HttpRequest mismatch.
+    try:
+        limit = int(request.query_params.get("limit") or 0) or None
+    except Exception:
+        limit = None
+    try:
+        offset = int(request.query_params.get("offset") or 0) or 0
+    except Exception:
+        offset = 0
+    sort = request.query_params.get("sort") or "count"
+
+    total, items = _collect_artist_aggregates(limit=limit, offset=offset, sort=sort)
+    return Response({"total": total, "items": items}, status=200)
 
 
 class SongRatingsListCreateView(generics.ListCreateAPIView):
