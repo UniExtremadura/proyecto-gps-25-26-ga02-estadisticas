@@ -16,8 +16,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    # Stats app: use top-level `stats` package (consolidated)
-    "stats",
+    # Stats app with explicit AppConfig to enable post-migrate seeding
+    "stats.apps.StatsConfig",
     "corsheaders",
 ]
 
