@@ -16,6 +16,8 @@
 node_modules/
 package-lock.json
 
+# Migrations (keep only initial)
+!*/migrations/0001_initial.py
 
 # Cached files
 __pycache__/
