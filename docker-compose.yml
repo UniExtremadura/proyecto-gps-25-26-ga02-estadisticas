@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-estadisticas_db}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-12345}
+    ports:
+      # Mapea el puerto del host a 3307 para evitar conflictos si ya hay MySQL local.
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  web:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+    ports:
+      - "8002:8002"
+    restart: unless-stopped
+
+volumes:
+  db_data:
+    driver: local
