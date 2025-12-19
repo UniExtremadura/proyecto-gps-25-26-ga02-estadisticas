@@ -14,7 +14,7 @@ Backend API REST para gestión y agregación de estadísticas de música (rating
 
 #### 1. Crear archivo `.env`
 
-En la raíz del proyecto, crea un archivo `.env` con las variables de entorno:
+En la raíz del proyecto, crea un archivo (si no existe)`.env` con las variables de entorno:
 
 ```bash
 SECRET_KEY=dev-secret-key-cambiala
