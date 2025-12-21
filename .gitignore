@@ -1,19 +1,32 @@
-# Python Virtual Environment
-.venv/*
 
 # Databases
 *.sqlite*
+*.db
+backup.sql
 
-# Misc
-.idea
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
 .DS_Store
 
-# Migrations
-*/migrations
-!*/migrations/0001_initial.py
+# Node (if accidentally added)
+node_modules/
+package-lock.json
+
+
 
 # Cached files
-*/_pycache_
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
 
-# Python init files
-*/_init_.py
+
+
+# Docker volumes data
+*.log
