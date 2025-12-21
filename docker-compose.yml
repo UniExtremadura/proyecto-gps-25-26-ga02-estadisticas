@@ -7,7 +7,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-12345}
     ports:
       # Mapea el puerto del host a 3307 para evitar conflictos si ya hay MySQL local.
-      - "3307:3306"
+      - "3317:3316"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s

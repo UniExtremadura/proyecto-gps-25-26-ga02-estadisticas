@@ -20,7 +20,7 @@ Crear un archivo `.env` en la raíz del proyecto con el siguiente contenido:
 
 ```bash
 SECRET_KEY=dev-secret-key-cambiala
-DEBUG=1
+DEBUG=True
 DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
 
 DB_ENGINE=django.db.backends.mysql
