@@ -1,6 +1,7 @@
 services:
   db:
     image: mysql:8
+    container_name: db
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_NAME:-estadisticas_db}
@@ -17,6 +18,7 @@ services:
 
   web:
     build: .
+    container_name: back_estadisticas
     depends_on:
       db:
         condition: service_healthy
